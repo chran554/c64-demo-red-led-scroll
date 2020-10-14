@@ -168,7 +168,7 @@ Init:
         and #%01111111
         sta $D011	      // Clear most significant bit in VIC's raster register (for raster interrupt on upper part of screen, above line #256)
 
-        lda #$00        // Interrupt on this raster line
+        lda #$60        // Interrupt on this raster line
         sta $D012       // Set the raster line number where interrupt should occur
 
         lda #<irq1
@@ -184,28 +184,10 @@ no_exit:
         jmp no_exit
 
 irq1:
-        // Set next raster interrupt (raster interrupt irq2)
-        lda #<irq2
-        sta $0314
-        lda #>irq2
-        sta $0315
-
-
-        lda #60 // Create raster interrupt at line 60
-        sta $d012
-
-        asl $D019	      // "Acknowledge" (asl do both read and write to memory location) the interrupt by clearing the VIC's interrupt flag.
-        //jmp $EA31	      // Jump into KERNAL's standard interrupt service routine to handle keyboard scan, cursor display etc.
-        jmp SYSTEM_IRQ_HANDLER
-
-irq2:
-        jsr rasterline_start
-
+        //jsr rasterline_start
         jsr scroll_text
-
         jsr address_sid_music_play
-
-        jsr rasterline_end
+        //jsr rasterline_end
 
         // Set next raster interrupt (back to raster interrupt irq1)
         lda #<irq1
@@ -213,7 +195,7 @@ irq2:
         lda #>irq1
         sta $0315
 
-        lda #49         // Interrupt on this raster line
+        lda #60         // Interrupt on this raster line
         sta $D012       // Set the raster line number where interrupt should occur
 
         asl $D019	      // "Acknowledge" (asl do both read and write to memory location) the interrupt by clearing the VIC's interrupt flag.
@@ -406,9 +388,9 @@ add_next_rightmost_scroll_message_char_pixel:
 
 skip_scroll_message_offset_reset:
 
-        ldx #COLOR_WHITE
-        stx $D800
-        sta $0400 // DEBUG: Print character in white at top left corner for debug purpose
+        // ldx #COLOR_WHITE
+        // stx $D800
+        // sta $0400 // DEBUG: Print character in white at top left corner for debug purpose
 
 setup_font_character_indirect_address:
         // Initialize the indirect address of the font character by setting the character value in the adress low byte
@@ -492,7 +474,7 @@ put_character:
 static_message_text:
     .encoding "screencode_mixed"
 //  .text @"1234567890123456789012345678901234567890"
-    .text @"        Till Grabbarna p\$60 gatan         "
+    .text @"              LED scroller              "
     .byte $00 // Static message text is null terminated
 
 
@@ -503,10 +485,9 @@ scroll_text_message:
     .encoding "screencode_mixed"
 //  .text "1234567890123456789012345678901234567890"
 //  .text "1234567890123456789012345678901234567890123456789012345678901234"
-    .text @"     Hej p\$60 er! \$64ntligen har jag f\$60tt tummen ur att koda maskinkod/assembler. "
-    .text @" Endast 30 \$60r senare... De varmaste h\$61lsningarna till b\$61sta v\$61nnerna p\$60"
-    .text @" Viskarhultsv\$61gen i 54:an och 59:an fr\$60n 51:an."
-    .text @" Det \$61r er jag tackar f\$62r s\$60 mycket fr\$60n min barndom.   "
+    .text @"     This is a test of a LED-scroller. It's not really a smooth scroll"
+    .text @" but rather a mimics the looks and operation of a 8*40 LED matrix panel that you can see"
+    .text @" in the window of your favourite pizza place."
     .byte $00 // Scroll message text is null terminated
 
 
