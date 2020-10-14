@@ -491,8 +491,8 @@ put_character:
 // ---------------------------------------------
 static_message_text:
     .encoding "screencode_mixed"
-//  .text "1234567890123456789012345678901234567890"
-    .text "     %  Till Grabbarna på gatan  %      "
+//  .text @"1234567890123456789012345678901234567890"
+    .text @"        Till Grabbarna p\$60 gatan         "
     .byte $00 // Static message text is null terminated
 
 
@@ -503,10 +503,10 @@ scroll_text_message:
     .encoding "screencode_mixed"
 //  .text "1234567890123456789012345678901234567890"
 //  .text "1234567890123456789012345678901234567890123456789012345678901234"
-    .text " []°    Hej på er! Äntligen har jag fått tummen ur att göra min mjukscroll. "
-    .text "Bara 30 år senare... De varmaste hälsningarna till bästa kompisarna på"
-    .text " Viskarhultsvägen i 54:an och 59:an från 51:an."
-    .text " Det är er jag tackar för så mycket från min barndom.   "
+    .text @"     Hej p\$60 er! \$64ntligen har jag f\$60tt tummen ur att koda maskinkod/assembler. "
+    .text @" Endast 30 \$60r senare... De varmaste h\$61lsningarna till b\$61sta v\$61nnerna p\$60"
+    .text @" Viskarhultsv\$61gen i 54:an och 59:an fr\$60n 51:an."
+    .text @" Det \$61r er jag tackar f\$62r s\$60 mycket fr\$60n min barndom.   "
     .byte $00 // Scroll message text is null terminated
 
 
@@ -528,7 +528,7 @@ scroll_text_message:
 // More fonts at http://kofler.dot.at/c64/
 // Load font to last 2k block of bank 3
 * = address_font "font"
-    .import binary "fonts/Giana sisters demo font 02.bin"
+    .import binary "fonts/Giana sisters demo font 03-charset.bin"
 //    !bin "fonts/giana_sisters.font.64c",,2
 //    !bin "fonts/devils_collection_25_y.64c",,2
 //    !bin "fonts/double_char_font.bin"
