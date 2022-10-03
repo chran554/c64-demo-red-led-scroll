@@ -4,7 +4,7 @@ The first real program I tried out for C64 (6510 processor) assembler programmin
 
 image::documentation/images/red-led-scroll-screenshot.png[Red LED scroll screenshot]
 
-Red LED scroll as Youtube video
+https://vimeo.com/756522273[Red LED scroll] clip on Vimeo.
 
 == How to build and run
 
