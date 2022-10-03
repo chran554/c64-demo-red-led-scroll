@@ -1,9 +1,9 @@
 #!/bin/bash
 
-assemblerFile="simple_red_led_scroll.asm"
+assemblerFile="red_led_scroll.asm"
 projectFileDir="."
 
-utilities_path="/Users/christian/projects/code/c64/utilities"
+utilities_path="~/projects/code/c64/c64-utilities"
 
 # Get absolute path for supplied project path (no relative path)
 cd $projectFileDir

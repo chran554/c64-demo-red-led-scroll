@@ -1,3 +1,15 @@
 = C64 demo "Red Led Scroll"
 
 The first real program I tried out for C64 (6510 processor) assembler programming.
+
+image::documentation/images/red-led-scroll-screenshot.png[Red LED scroll screenshot]
+
+Red LED scroll as Youtube video
+
+== How to build and run
+
+== Binaries
+
+Precompiled binaries are found in `bin` directory either as a `prg`-file or as a `d64`-file (a C64 floppy disc image).
+
+Load them in your favourite C64 emulator.
