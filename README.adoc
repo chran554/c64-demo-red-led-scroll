@@ -1,0 +1,3 @@
+= C64 demo "Red Led Scroll"
+
+The first real program I tried out for C64 (6510 processor) assembler programming.
